@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Proposta Comercial - PP 01 00003 - Pino de Engate</title>
+<style>
+/* CSS para impressão/PDF - Margens e layout A4 */
+@page {
+    size: A4;
+    margin: 15mm 10mm;
+}
+
+@media print {
+    body {
+        width: 210mm;
+        margin: 0;
+        padding: 0;
+        font-size: 10pt;
+    }
+
+    .main-header {
+        page-break-inside: avoid;
+        page-break-after: avoid;
+    }
+
+    .empresa-info, .peca-especificacoes, .cta-box {
+        page-break-inside: avoid;
+    }
+
+    .beneficios-grid {
+        page-break-inside: avoid;
+        gap: 10px;
+    }
+
+    .beneficio-card {
+        padding: 15px;
+    }
+
+    table {
+        page-break-inside: auto;
+        font-size: 9pt;
+    }
+
+    tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+
+    h2, h3 {
+        page-break-after: avoid;
+    }
+
+    .section-title {
+        page-break-after: avoid;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 14pt;
+    }
+
+    .validade, .footer {
+        page-break-inside: avoid;
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+    position: relative;
+    max-width: 210mm;
+    margin: 0 auto;
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background-image: url('simbolo lasec.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.03;
+    z-index: -1;
+    pointer-events: none;
+}
+.main-header {
+    background: white;
+    padding: 30px 40px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    margin-bottom: 30px;
+}
+.logo-container {
+    flex-shrink: 0;
+}
+.logo-container img {
+    height: 120px;
+    width: auto;
+    filter: brightness(1.1) contrast(1.1);
+}
+.company-info-header {
+    flex-grow: 1;
+}
+.company-name-main {
+    font-size: 32pt;
+    font-weight: bold;
+    color: #1e3c72;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+}
+.company-tagline {
+    font-size: 14pt;
+    color: #2a5298;
+    margin: 8px 0 0 0;
+    font-weight: 500;
+}
+.document-title-container {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #3d6bb3 100%);
+    padding: 25px 40px;
+    margin: 25px -40px 0 -40px;
+    text-align: center;
+    box-shadow: 0 3px 15px rgba(30,60,114,0.3);
+}
+.document-title {
+    font-size: 28pt;
+    font-weight: bold;
+    color: white;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+.document-subtitle {
+    font-size: 13pt;
+    color: white;
+    margin: 8px 0;
+    opacity: 0.95;
+}
+.content-wrapper {
+    padding: 0 40px 40px 40px;
+}
+.empresa-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+.empresa-box {
+    padding: 20px;
+    background-color: white;
+    border-radius: 6px;
+    border-left: 4px solid #1e3c72;
+}
+.empresa-box h3 {
+    color: #1e3c72;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 16pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.empresa-box p {
+    margin: 8px 0;
+    color: #333;
+    font-size: 11pt;
+    line-height: 1.4;
+}
+.section-title {
+    color: #1e3c72;
+    font-size: 18pt;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #1e3c72;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+}
+.peca-especificacoes {
+    background-color: #e3f2fd;
+    padding: 25px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border-left: 5px solid #1e3c72;
+}
+.peca-especificacoes h3 {
+    color: #1e3c72;
+    margin-top: 0;
+    font-size: 18pt;
+    margin-bottom: 15px;
+}
+.peca-especificacoes p {
+    margin: 10px 0;
+    font-size: 11pt;
+    line-height: 1.6;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+th {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11pt;
+    letter-spacing: 0.5px;
+}
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 11pt;
+}
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+tr:hover {
+    background-color: #e3f2fd;
+    transition: background-color 0.3s ease;
+}
+.destaque-row {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%) !important;
+    font-weight: bold;
+    border: 2px solid #28a745;
+}
+.destaque-row td {
+    color: #155724;
+    font-size: 12pt;
+}
+.preco-destaque {
+    font-size: 14pt !important;
+    color: #28a745 !important;
+    font-weight: bold !important;
+}
+.badge-recomendado {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 10pt;
+    font-weight: bold;
+    display: inline-block;
+    margin-left: 10px;
+}
+.observacao-box {
+    background-color: #d4edda;
+    padding: 15px;
+    border-radius: 6px;
+    border-left: 4px solid #28a745;
+    margin: 20px 0;
+}
+.observacao-box p {
+    margin: 0;
+    color: #155724;
+    font-size: 10pt;
+    line-height: 1.5;
+}
+.cta-box {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    padding: 25px;
+    margin-top: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.cta-box h3 {
+    margin: 0 0 15px 0;
+    font-size: 18pt;
+    text-transform: uppercase;
+}
+.cta-box p {
+    font-size: 11pt;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+.cta-box .valor-destaque {
+    font-size: 24pt;
+    font-weight: bold;
+    margin: 15px 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+.validade {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    margin-top: 30px;
+    border: 2px dashed #1e3c72;
+}
+.validade p {
+    margin: 8px 0;
+    color: #666;
+    font-size: 11pt;
+}
+.validade strong {
+    color: #1e3c72;
+    font-size: 14pt;
+}
+.contato-box {
+    padding: 20px;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    margin-top: 30px;
+}
+.contato-box h3 {
+    color: white;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 16pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.contato-box p {
+    font-size: 11pt;
+    color: white;
+    line-height: 1.8;
+    margin: 8px 0;
+}
+.footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #1e3c72;
+    text-align: center;
+    font-size: 9pt;
+    color: #666;
+}
+</style>
+</head>
+<body>
+
+<div class="main-header">
+    <div class="header-content">
+        <div class="logo-container">
+            <img src="simbolo lasec.jpg" alt="LASEC">
+        </div>
+        <div class="company-info-header">
+            <div class="company-name-main">LASEC USINAGEM</div>
+            <div class="company-tagline">Usinagem de Precisão CNC</div>
+        </div>
+    </div>
+    <div class="document-title-container">
+        <div class="document-title">PROPOSTA COMERCIAL</div>
+        <div class="document-subtitle">Pino de Engate - PP 01 00003</div>
+        <div class="document-subtitle">Orçamento 012/2025 | 16 de dezembro de 2025</div>
+        <div class="document-subtitle" style="font-size: 11pt;">Validade: 10 dias a partir da data de emissão</div>
+    </div>
+</div>
+
+<div class="content-wrapper">
+
+<div class="empresa-info">
+    <div class="empresa-box">
+        <h3>FORNECEDOR</h3>
+        <p><strong>Razão Social:</strong> MALELO INDÚSTRIA E COMÉRCIO FERRAMENTAS LTDA ME</p>
+        <p><strong>Nome Fantasia:</strong> LASEC USINAGEM DE PRECISÃO</p>
+        <p><strong>CNPJ:</strong> 07.047.619/0001-09</p>
+        <p><strong>IE:</strong> 117.116.373.116</p>
+        <p><strong>Endereço:</strong> Rua Álvaro Silva, 233 - Bairro do Limão</p>
+        <p><strong>CEP:</strong> 02723-020 - São Paulo - SP</p>
+        <p><strong>Telefone:</strong> (11) 3936-5041 (WhatsApp)</p>
+        <p><strong>Telefone:</strong> (11) 3935-1271</p>
+        <p><strong>E-mail:</strong> compras@lasec.com.br</p>
+        <p><strong>Site:</strong> www.lasec.com.br</p>
+    </div>
+    <div class="empresa-box">
+        <h3>CLIENTE</h3>
+        <p><strong>Empresa:</strong> BBOX</p>
+        <p><strong>Orçamento:</strong> 012/2025</p>
+        <p><strong>Data:</strong> 16 de dezembro de 2025</p>
+        <p><strong>Validade:</strong> 10 dias</p>
+        <p><strong>Contato:</strong> (11) 3936-5041</p>
+    </div>
+</div>
+
+<div class="peca-especificacoes">
+    <h3>ESPECIFICAÇÕES DA PEÇA</h3>
+    <p><strong>Código:</strong> PP 01 00003</p>
+    <p><strong>Descrição:</strong> Pino de Engate</p>
+    <p><strong>Material:</strong> Aço Trefilado ABNT 1010/20 - Ø 5/8" (15,87mm) fornecido pelo cliente</p>
+    <p><strong>Dimensões:</strong> Ø 14mm (corpo) | Ø 10mm (ponta) | Comprimento ~22mm | Furo lateral Ø 3mm | Corte bedame 2mm</p>
+    <p><strong>Tolerâncias:</strong> DIN 2768 classe média | Ø 10mm tolerância d7 (-0,006 a -0,015mm)</p>
+    <p><strong>Acabamento:</strong> Chanfro 0,5mm × 45° | Corte limpo com bedame</p>
+    <p><strong>Observações Técnicas:</strong> Inspeção 100% com certificado de conformidade</p>
+</div>
+
+<h2 class="section-title">TABELA DE PREÇOS</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Quantidade<br>(Lote)</th>
+            <th>Preço Unitário<br>(R$/peça)</th>
+            <th>Valor Total<br>(R$)</th>
+            <th>Economia vs<br>Lote Menor</th>
+            <th>Prazo de Entrega</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>30 peças</strong></td>
+            <td>R$ 8,28</td>
+            <td>R$ 248,40</td>
+            <td>-</td>
+            <td>5-7 dias úteis</td>
+        </tr>
+        <tr class="destaque-row">
+            <td><strong>100 peças</strong> <span class="badge-recomendado">RECOMENDADO</span></td>
+            <td class="preco-destaque">R$ 5,97</td>
+            <td class="preco-destaque">R$ 597,00</td>
+            <td><strong>-28%</strong></td>
+            <td>5-7 dias úteis</td>
+        </tr>
+        <tr>
+            <td><strong>200 peças</strong></td>
+            <td>R$ 5,47</td>
+            <td>R$ 1.094,00</td>
+            <td><strong>-34%</strong></td>
+            <td>7-10 dias úteis</td>
+        </tr>
+        <tr>
+            <td><strong>500 peças</strong></td>
+            <td>R$ 5,18</td>
+            <td>R$ 2.590,00</td>
+            <td><strong>-37%</strong></td>
+            <td>Sob consulta</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="observacao-box">
+    <p><strong>Observação:</strong> Todos os preços já incluem impostos (Simples Nacional 10%) e estão prontos para faturamento em Nota Fiscal Eletrônica (NFe).</p>
+</div>
+
+<h2 class="section-title">NOSSA RECOMENDAÇÃO COMERCIAL</h2>
+
+<div class="cta-box">
+    <h3>LOTE RECOMENDADO: 100 PEÇAS</h3>
+    <div class="valor-destaque">R$ 5,97 por peça</div>
+    <p><strong>Investimento Total: R$ 597,00</strong></p>
+    <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.3); margin: 15px 0;">
+    <p style="text-align: left; padding: 0 20px; font-size: 11pt; line-height: 1.6;">
+        <strong style="font-size: 12pt;">Por que este lote é ideal:</strong><br><br>
+        • <strong>Viabilidade Financeira:</strong> Lote de 100 peças oferece o melhor custo-benefício com economia de 28% comparado ao lote mínimo de 30 peças<br>
+        • <strong>Setup Otimizado:</strong> Custo de setup (R$ 41,54) distribuído em 100 peças resulta em apenas R$ 0,41/peça em custo fixo<br>
+        • <strong>Capacidade de Produção:</strong> Volume permite entrega em 5-7 dias úteis sem comprometer outras operações<br>
+        • <strong>Margem Comercial:</strong> Preço de R$ 5,97/peça mantém margem saudável de 35% sobre custo base, equilibrando lucratividade e competitividade<br>
+        • <strong>Eficiência Operacional:</strong> Reduz risco de sucata e reprocessamento, garantindo margens consistentes na fabricação
+    </p>
+</div>
+
+<h2 class="section-title">CONDIÇÕES COMERCIAIS</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 35%;">Item</th>
+            <th>Condição</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Forma de Pagamento</strong></td>
+            <td>50% no pedido | 50% na entrega (ou 30 dias para clientes com cadastro aprovado)</td>
+        </tr>
+        <tr>
+            <td><strong>Prazo de Entrega</strong></td>
+            <td>5 a 7 dias úteis após recebimento do material</td>
+        </tr>
+        <tr>
+            <td><strong>Matéria-Prima</strong></td>
+            <td>Fornecida pelo cliente - Aço Trefilado ABNT 1010/20 Ø 5/8" (15,87mm)</td>
+        </tr>
+        <tr>
+            <td><strong>Validade da Proposta</strong></td>
+            <td>10 dias corridos a partir da data de emissão</td>
+        </tr>
+        <tr>
+            <td><strong>Garantia de Qualidade</strong></td>
+            <td>12 meses conforme especificação | Inspeção 100% com certificado de conformidade | Inspecionado conforme ABNT/DIN 2768 classe média</td>
+        </tr>
+        <tr>
+            <td><strong>Embalagem</strong></td>
+            <td>Padrão industrial adequado para transporte | Caixa com divisórias para proteção | Peças protegidas contra impactos e corrosão</td>
+        </tr>
+        <tr>
+            <td><strong>Frete</strong></td>
+            <td>Orçamento a definir conforme política LASEC e localização do cliente | Consulte gerência comercial</td>
+        </tr>
+        <tr>
+            <td><strong>Programação de Entregas</strong></td>
+            <td>Flexível conforme necessidade do cliente | Suportamos lotes de entrega parciais</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="validade">
+    <p><strong>Validade desta Proposta:</strong></p>
+    <p>10 dias a partir da data de emissão</p>
+    <p style="margin-top: 15px; font-style: italic; color: #666;">
+        Preços sujeitos a reajuste após o período de validade | Condições comerciais podem ser alteradas conforme mercado
+    </p>
+</div>
+
+<div class="contato-box">
+    <h3>Entre em Contato para Fechar Negócio!</h3>
+    <p>
+        <strong>Tel:</strong> (11) 3936-5041 (WhatsApp) | <strong>Tel:</strong> (11) 3935-1271<br>
+        <strong>E-mail:</strong> compras@lasec.com.br | <strong>Site:</strong> www.lasec.com.br<br>
+        <strong style="color: #ffd700;">Contato Comercial:</strong> Alexandre Souza
+    </p>
+</div>
+
+<div class="footer">
+    <strong>LASEC USINAGEM</strong> - Usinagem de Precisão CNC<br>
+    Rua Álvaro Silva, 233 - Bairro do Limão - São Paulo/SP - CEP 02723-020<br>
+    Tel: (11) 3936-5041 / (11) 3935-1271<br>
+    Data: 16 de dezembro de 2025 | Orçamento 012/2025 | Elaborado por: Alexandre Souza
+</div>
+
+</div>
+
+</body>
+</html>

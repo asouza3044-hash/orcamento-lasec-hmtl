@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Análise de Viabilidade Econômica - [[CODIGO_PECA]]</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+    position: relative;
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background-image: url('simbolo lasec.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.03;
+    z-index: -1;
+    pointer-events: none;
+}
+.main-header {
+    background: white;
+    padding: 30px 40px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    margin-bottom: 30px;
+}
+.logo-container {
+    flex-shrink: 0;
+}
+.logo-container img {
+    height: 120px;
+    width: auto;
+    filter: brightness(1.1) contrast(1.1);
+}
+.company-info-header {
+    flex-grow: 1;
+}
+.company-name-main {
+    font-size: 32pt;
+    font-weight: bold;
+    color: #1e3c72;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+}
+.company-tagline {
+    font-size: 14pt;
+    color: #2a5298;
+    margin: 8px 0 0 0;
+    font-weight: 500;
+}
+.document-title-container {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #3d6bb3 100%);
+    padding: 25px 40px;
+    margin: 25px -40px 0 -40px;
+    text-align: center;
+    box-shadow: 0 3px 15px rgba(30,60,114,0.3);
+}
+.document-title {
+    font-size: 28pt;
+    font-weight: bold;
+    color: white;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+.document-subtitle {
+    font-size: 13pt;
+    color: white;
+    margin: 8px 0;
+    opacity: 0.95;
+}
+.content-wrapper {
+    padding: 0 40px 40px 40px;
+}
+.section-title {
+    background-color: #495057;
+    color: white;
+    padding: 8px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.info-box {
+    background-color: #f8f9fa;
+    border-left: 5px solid #1e3c72;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+.info-box h3 {
+    margin-top: 0;
+    color: #1e3c72;
+    font-size: 18px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+th {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+tr:hover {
+    background-color: #e3f2fd;
+    transition: background-color 0.3s ease;
+}
+.destaque {
+    background-color: #d4edda !important;
+    font-weight: bold;
+    border: 2px solid #28a745;
+}
+.alerta {
+    background-color: #fff3cd !important;
+    font-weight: bold;
+}
+.critico {
+    background-color: #f8d7da !important;
+    font-weight: bold;
+}
+.recomendacao {
+    background-color: #d1ecf1;
+    border-left: 5px solid #0c5460;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+.recomendacao h4 {
+    margin-top: 0;
+    color: #0c5460;
+}
+.conclusao {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 25px;
+    margin-top: 40px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+}
+.grid-analise {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+.card-analise {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 5px solid #1e3c72;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.card-analise h4 {
+    color: #1e3c72;
+    margin-top: 0;
+    font-size: 16px;
+}
+.card-analise .valor {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+}
+.grafico-barras {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 300px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+.barra {
+    width: 18%;
+    background: linear-gradient(to top, #1e3c72, #2a5298);
+    border-radius: 5px 5px 0 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+.barra:hover {
+    transform: translateY(-5px);
+}
+.barra-label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+.barra-valor {
+    position: absolute;
+    top: -30px;
+    color: #333;
+    font-weight: bold;
+    font-size: 14px;
+}
+.footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #1e3c72;
+    text-align: center;
+    font-size: 9pt;
+    color: #666;
+}
+</style>
+</head>
+<body>
+
+<div class="main-header">
+    <div class="header-content">
+        <div class="logo-container">
+            <img src="simbolo lasec.jpg" alt="LASEC">
+        </div>
+        <div class="company-info-header">
+            <div class="company-name-main">LASEC USINAGEM</div>
+            <div class="company-tagline">Usinagem de Precisão CNC</div>
+        </div>
+    </div>
+    <div class="document-title-container">
+        <div class="document-title">ANÁLISE DE VIABILIDADE ECONÔMICA DE LOTES</div>
+        <div class="document-subtitle">[[DESCRICAO_PECA]]</div>
+        <div class="document-subtitle">Orçamento [[ORCAMENTO]] - [[CLIENTE]]</div>
+    </div>
+</div>
+
+<div class="content-wrapper">
+
+<div class="info-box">
+    <h3>Dados da Peça</h3>
+    <p><strong>Código:</strong> [[CODIGO_PECA]]</p>
+    <p><strong>Material:</strong> [[MATERIAL]]</p>
+    <p><strong>Máquina:</strong> [[MAQUINA]]</p>
+    <p><strong>Tempo de Fabricação:</strong> [[TEMPO_TOTAL]] min/peça ([[TEMPO_PRODUTIVO]] min produtivo + [[TEMPO_IMPRODUTIVO]] min improdutivo)</p>
+    <p><strong>Setup:</strong> [[SETUP_HORAS]]h = R$ [[SETUP_VALOR]]</p>
+</div>
+
+<h2 class="section-title">Comparativo de Custos por Lote</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Lote</th>
+            <th>Setup (R$)</th>
+            <th>MOD (R$)</th>
+            <th>Custo Total (R$)</th>
+            <th>Custo/Peça (R$)</th>
+            <th>Redução vs Lote [[LOTE_1]]</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="critico">
+            <td><strong>[[LOTE_1]] pçs</strong></td>
+            <td>[[SETUP_LOTE_1]]</td>
+            <td>[[MOD_LOTE_1]]</td>
+            <td>[[CUSTO_TOTAL_LOTE_1]]</td>
+            <td><strong>R$ [[CUSTO_UNIT_LOTE_1]]</strong></td>
+            <td>-</td>
+        </tr>
+        <tr class="destaque">
+            <td><strong>[[LOTE_2]] pçs</strong></td>
+            <td>[[SETUP_LOTE_2]]</td>
+            <td>[[MOD_LOTE_2]]</td>
+            <td>[[CUSTO_TOTAL_LOTE_2]]</td>
+            <td><strong>R$ [[CUSTO_UNIT_LOTE_2]]</strong></td>
+            <td>[[REDUCAO_LOTE_2]]</td>
+        </tr>
+        <tr>
+            <td><strong>[[LOTE_3]] pçs</strong></td>
+            <td>[[SETUP_LOTE_3]]</td>
+            <td>[[MOD_LOTE_3]]</td>
+            <td>[[CUSTO_TOTAL_LOTE_3]]</td>
+            <td><strong>R$ [[CUSTO_UNIT_LOTE_3]]</strong></td>
+            <td>[[REDUCAO_LOTE_3]]</td>
+        </tr>
+        <tr>
+            <td><strong>[[LOTE_4]] pçs</strong></td>
+            <td>[[SETUP_LOTE_4]]</td>
+            <td>[[MOD_LOTE_4]]</td>
+            <td>[[CUSTO_TOTAL_LOTE_4]]</td>
+            <td><strong>R$ [[CUSTO_UNIT_LOTE_4]]</strong></td>
+            <td>[[REDUCAO_LOTE_4]]</td>
+        </tr>
+        <tr>
+            <td><strong>[[LOTE_5]] pçs</strong></td>
+            <td>[[SETUP_LOTE_5]]</td>
+            <td>[[MOD_LOTE_5]]</td>
+            <td>[[CUSTO_TOTAL_LOTE_5]]</td>
+            <td><strong>R$ [[CUSTO_UNIT_LOTE_5]]</strong></td>
+            <td>[[REDUCAO_LOTE_5]]</td>
+        </tr>
+        <tr>
+            <td><strong>[[LOTE_6]] pçs</strong></td>
+            <td>[[SETUP_LOTE_6]]</td>
+            <td>[[MOD_LOTE_6]]</td>
+            <td>[[CUSTO_TOTAL_LOTE_6]]</td>
+            <td><strong>R$ [[CUSTO_UNIT_LOTE_6]]</strong></td>
+            <td>[[REDUCAO_LOTE_6]]</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="section-title">Análise de Lote Mínimo de Produção</h2>
+
+<div class="info-box" style="background-color: #fff3cd; border-left-color: #ffc107;">
+    <h3>Qual o Lote Mínimo que Posso Fabricar?</h3>
+
+    <p style="font-size: 11pt; margin-bottom: 15px;"><strong>Baseado no processo de fabricação validado:</strong></p>
+
+    <div style="background-color: white; padding: 20px; border-radius: 8px; border: 2px solid #1e3c72; margin: 15px 0;">
+        <p style="font-size: 14pt; margin: 0; color: #1e3c72;"><strong>LOTE MÍNIMO TÉCNICO: [[LOTE_MINIMO_TECNICO]] peças</strong></p>
+        <p style="font-size: 10pt; margin: 10px 0 0 0; color: #666;">Menor quantidade tecnicamente viável para produção CNC</p>
+    </div>
+
+    <p style="margin-top: 20px;"><strong>Interpretação dos resultados:</strong></p>
+    <ul style="font-size: 10pt; margin-left: 20px; line-height: 1.8;">
+        <li><strong>Lote [[LOTE_MINIMO_TECNICO]] peças:</strong>
+            <ul style="margin-left: 20px;">
+                <li>Tecnicamente possível (máquina aceita)</li>
+                <li>Setup representa alta porcentagem do custo - MUITO ALTO</li>
+                <li>Usar apenas para protótipos urgentes ou amostras</li>
+            </ul>
+        </li>
+        <li><strong>Lote [[LOTE_1]] peças (mínimo comercial recomendado):</strong>
+            <ul style="margin-left: 20px;">
+                <li>Setup bem diluído</li>
+                <li>Custo unitário competitivo</li>
+                <li>Menor lote economicamente viável para produção regular</li>
+            </ul>
+        </li>
+        <li><strong>Lote [[LOTE_2]] peças (RECOMENDADO):</strong>
+            <ul style="margin-left: 20px;">
+                <li>Setup representa baixa porcentagem do custo</li>
+                <li>Economia significativa vs lote menor</li>
+                <li>Melhor equilíbrio entre investimento e custo unitário</li>
+            </ul>
+        </li>
+    </ul>
+
+    <div style="background-color: #e8f4f8; padding: 15px; border-left: 4px solid #0c5460; margin-top: 20px; border-radius: 5px;">
+        <p style="margin: 0; font-size: 10.5pt;"><strong>RECOMENDAÇÃO LASEC:</strong></p>
+        <ul style="margin: 10px 0 0 20px; font-size: 10pt;">
+            <li><strong>Protótipos/amostras:</strong> Lote mínimo [[LOTE_MINIMO_TECNICO]]-[[LOTE_1]] peças (aceitar custo maior)</li>
+            <li><strong>Primeira produção:</strong> Lote mínimo [[LOTE_1]] peças</li>
+            <li><strong>Produção regular:</strong> Lote recomendado [[LOTE_2]] peças</li>
+            <li><strong>Produção seriada:</strong> Lotes de [[LOTE_3]]-[[LOTE_4]] peças (se demanda justificar)</li>
+        </ul>
+    </div>
+</div>
+
+<div class="grid-analise">
+    <div class="card-analise">
+        <h4>Lote Mínimo Técnico</h4>
+        <div class="valor">[[LOTE_MINIMO_TECNICO]] peças</div>
+        <p>Menor lote que a máquina CNC aceita produzir</p>
+    </div>
+    <div class="card-analise">
+        <h4>Lote Mínimo Comercial</h4>
+        <div class="valor">[[LOTE_1]] peças</div>
+        <p>Menor lote economicamente viável para produção</p>
+    </div>
+    <div class="card-analise">
+        <h4>Lote Recomendado</h4>
+        <div class="valor">[[LOTE_2]] peças</div>
+        <p>Melhor relação custo/benefício para o cliente</p>
+    </div>
+    <div class="card-analise">
+        <h4>Economia vs Lote [[LOTE_1]]</h4>
+        <div class="valor">[[ECONOMIA_PERCENTUAL]]%</div>
+        <p>Economia no lote [[LOTE_2]] comparado ao lote [[LOTE_1]]</p>
+    </div>
+</div>
+
+<h2 class="section-title">Visualização Gráfica - Custo por Peça</h2>
+
+<div class="grafico-barras">
+    <div class="barra" style="height: 100%;">
+        <span class="barra-valor">R$ [[CUSTO_UNIT_LOTE_1]]</span>
+        <span class="barra-label">[[LOTE_1]] pçs</span>
+    </div>
+    <div class="barra" style="height: [[ALTURA_BARRA_2]]%; background: linear-gradient(to top, #28a745, #20c997);">
+        <span class="barra-valor">R$ [[CUSTO_UNIT_LOTE_2]]</span>
+        <span class="barra-label">[[LOTE_2]] pçs</span>
+    </div>
+    <div class="barra" style="height: [[ALTURA_BARRA_3]]%;">
+        <span class="barra-valor">R$ [[CUSTO_UNIT_LOTE_3]]</span>
+        <span class="barra-label">[[LOTE_3]] pçs</span>
+    </div>
+    <div class="barra" style="height: [[ALTURA_BARRA_4]]%;">
+        <span class="barra-valor">R$ [[CUSTO_UNIT_LOTE_4]]</span>
+        <span class="barra-label">[[LOTE_4]] pçs</span>
+    </div>
+    <div class="barra" style="height: [[ALTURA_BARRA_5]]%; background: linear-gradient(to top, #1e3c72, #2a5298);">
+        <span class="barra-valor">R$ [[CUSTO_UNIT_LOTE_5]]</span>
+        <span class="barra-label">[[LOTE_5]] pçs</span>
+    </div>
+    <div class="barra" style="height: [[ALTURA_BARRA_6]]%; background: linear-gradient(to top, #1e3c72, #2a5298);">
+        <span class="barra-valor">R$ [[CUSTO_UNIT_LOTE_6]]</span>
+        <span class="barra-label">[[LOTE_6]] pçs</span>
+    </div>
+</div>
+
+<h2 class="section-title">Análise Detalhada por Lote</h2>
+
+<div class="recomendacao">
+    <h4>Lote [[LOTE_1]] peças - VIÁVEL mas MENOS ECONÔMICO</h4>
+    <p><strong>Custo Final:</strong> R$ [[CUSTO_UNIT_LOTE_1]]/peça (R$ [[CUSTO_TOTAL_LOTE_1]] total)</p>
+    <p><strong>Análise:</strong></p>
+    <ul>
+        <li>Lote mínimo aceitável para produção CNC</li>
+        <li>Setup representa alta porcentagem do custo total</li>
+        <li>Para cliente que compra regularmente, não é a melhor opção</li>
+    </ul>
+    <p><strong>Quando usar:</strong> Apenas para protótipos ou teste de mercado inicial</p>
+</div>
+
+<div class="recomendacao" style="background-color: #d4edda; border-left-color: #28a745;">
+    <h4 style="color: #155724;">Lote [[LOTE_2]] peças - RECOMENDADO</h4>
+    <p><strong>Custo Final:</strong> R$ [[CUSTO_UNIT_LOTE_2]]/peça (R$ [[CUSTO_TOTAL_LOTE_2]] total)</p>
+    <p><strong>Análise:</strong></p>
+    <ul>
+        <li><strong>MELHOR RELAÇÃO CUSTO/BENEFÍCIO</strong></li>
+        <li>Setup bem diluído no custo total</li>
+        <li>Economia significativa vs lote menor</li>
+        <li>Quantidade ideal para estoque intermediário</li>
+        <li>Permite reposição programada</li>
+    </ul>
+    <p><strong>Quando usar:</strong> <strong>RECOMENDADO como padrão para [[CLIENTE]]</strong></p>
+</div>
+
+<h2 class="section-title">Recomendações Estratégicas</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Cenário</th>
+            <th>Lote Recomendado</th>
+            <th>Justificativa</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Cliente novo / Teste</strong></td>
+            <td>[[LOTE_1]] peças</td>
+            <td>Minimiza risco inicial, valida mercado</td>
+        </tr>
+        <tr class="destaque">
+            <td><strong>Cliente recorrente</strong></td>
+            <td><strong>[[LOTE_2]] peças</strong></td>
+            <td><strong>Melhor custo/benefício, ideal para reposição programada</strong></td>
+        </tr>
+        <tr>
+            <td><strong>Demanda anual confirmada</strong></td>
+            <td>[[LOTE_3]] peças</td>
+            <td>Economia adicional, fracionamento possível</td>
+        </tr>
+        <tr>
+            <td><strong>Contrato de fornecimento</strong></td>
+            <td>[[LOTE_4]] peças</td>
+            <td>Máxima economia, viável apenas com demanda garantida</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="conclusao">
+    <h3 style="margin-top: 0;">CONCLUSÃO E RECOMENDAÇÃO</h3>
+    <p><strong>Para [[CLIENTE]] (cliente recorrente com demanda estabelecida):</strong></p>
+    <p style="font-size: 18px; margin: 15px 0;"><strong>LOTE RECOMENDADO: [[LOTE_2]] PEÇAS</strong></p>
+    <p><strong>Justificativa:</strong></p>
+    <p>Melhor equilíbrio entre custo unitário (R$ [[CUSTO_UNIT_LOTE_2]]) e investimento total (R$ [[CUSTO_TOTAL_LOTE_2]])</p>
+    <p>Economia significativa vs lote menor, sem exigir grande capacidade de estoque</p>
+    <p>Quantidade ideal para reposição programada</p>
+    <p>Permite flexibilidade de programação de entrega</p>
+    <br>
+    <p style="font-size: 14px; font-style: italic;">
+        Lotes maiores só se justificam com demanda anual confirmada e capacidade de estoque adequada
+    </p>
+</div>
+
+<div class="footer">
+    <strong>LASEC USINAGEM</strong> - Usinagem de Precisão CNC<br>
+    Rua Álvaro Silva, 233 - Bairro do Limão - São Paulo/SP - CEP 02723-020<br>
+    Tel: (11) 3936-5041 / (11) 3935-1271<br>
+    Data: [[DATA]] | Orçamento [[ORCAMENTO]] - [[CLIENTE]] | <span style="color: #dc3545; font-weight: bold;">CONFIDENCIAL - NÃO DISTRIBUIR</span>
+</div>
+
+</div>
+
+</body>
+</html>

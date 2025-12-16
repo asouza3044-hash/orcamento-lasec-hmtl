@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Estudo de Preço de Venda e NFe - [[CODIGO_PECA]]</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+    position: relative;
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background-image: url('simbolo lasec.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.03;
+    z-index: -1;
+    pointer-events: none;
+}
+.main-header {
+    background: white;
+    padding: 30px 40px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    margin-bottom: 30px;
+}
+.logo-container {
+    flex-shrink: 0;
+}
+.logo-container img {
+    height: 120px;
+    width: auto;
+    filter: brightness(1.1) contrast(1.1);
+}
+.company-info-header {
+    flex-grow: 1;
+}
+.company-name-main {
+    font-size: 32pt;
+    font-weight: bold;
+    color: #1e3c72;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+}
+.company-tagline {
+    font-size: 14pt;
+    color: #2a5298;
+    margin: 8px 0 0 0;
+    font-weight: 500;
+}
+.document-title-container {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #3d6bb3 100%);
+    padding: 25px 40px;
+    margin: 25px -40px 0 -40px;
+    text-align: center;
+    box-shadow: 0 3px 15px rgba(30,60,114,0.3);
+}
+.document-title {
+    font-size: 28pt;
+    font-weight: bold;
+    color: white;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+.document-subtitle {
+    font-size: 13pt;
+    color: white;
+    margin: 8px 0;
+    opacity: 0.95;
+}
+.content-wrapper {
+    padding: 0 40px 40px 40px;
+}
+.section-title {
+    background-color: #495057;
+    color: white;
+    padding: 8px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.info-box {
+    background-color: #f8f9fa;
+    border-left: 5px solid #1e3c72;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+.info-box h3 {
+    margin-top: 0;
+    color: #1e3c72;
+    font-size: 18px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+th {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+tr:hover {
+    background-color: #e3f2fd;
+    transition: background-color 0.3s ease;
+}
+.destaque {
+    background-color: #d4edda !important;
+    font-weight: bold;
+    border: 2px solid #28a745;
+}
+.calculo-detalhado {
+    background-color: #f1f3f5;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+.calculo-linha {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #dee2e6;
+}
+.calculo-linha.total {
+    font-weight: bold;
+    font-size: 18px;
+    border-top: 2px solid #1e3c72;
+    border-bottom: 2px solid #1e3c72;
+    margin-top: 10px;
+    color: #1e3c72;
+}
+.alerta-comercial {
+    background-color: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+.alerta-comercial h4 {
+    margin-top: 0;
+    color: #856404;
+}
+.conclusao {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 30px;
+    margin-top: 40px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.8;
+}
+.grid-precos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+.card-preco {
+    background-color: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    border: 3px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+.card-preco:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+.card-preco.recomendado {
+    border-color: #28a745;
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+}
+.card-preco h3 {
+    color: #1e3c72;
+    margin-top: 0;
+    font-size: 18px;
+}
+.card-preco .lote {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+}
+.card-preco .preco {
+    font-size: 28px;
+    font-weight: bold;
+    color: #1e3c72;
+    margin: 15px 0;
+}
+.card-preco .total {
+    font-size: 16px;
+    color: #666;
+    margin-top: 10px;
+}
+.card-preco .badge {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
+.footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #1e3c72;
+    text-align: center;
+    font-size: 9pt;
+    color: #666;
+}
+</style>
+</head>
+<body>
+
+<div class="main-header">
+    <div class="header-content">
+        <div class="logo-container">
+            <img src="simbolo lasec.jpg" alt="LASEC">
+        </div>
+        <div class="company-info-header">
+            <div class="company-name-main">LASEC USINAGEM</div>
+            <div class="company-tagline">Usinagem de Precisão CNC</div>
+        </div>
+    </div>
+    <div class="document-title-container">
+        <div class="document-title">ESTUDO DE PREÇO DE VENDA E NOTA FISCAL</div>
+        <div class="document-subtitle">[[DESCRICAO_PECA]]</div>
+        <div class="document-subtitle">Orçamento [[ORCAMENTO]] - [[CLIENTE]]</div>
+        <div class="document-subtitle" style="font-size: 11pt;">Documento de Uso Interno - Confidencial</div>
+    </div>
+</div>
+
+<div class="content-wrapper">
+
+<div class="info-box">
+    <h3>Informações do Orçamento</h3>
+    <p><strong>Fornecedor:</strong> MALELO INDÚSTRIA E COMÉRCIO FERRAMENTAS LTDA ME (LASEC)</p>
+    <p><strong>CNPJ:</strong> 07.047.619/0001-09 | <strong>IE:</strong> 117.116.373.116</p>
+    <p><strong>Cliente:</strong> [[CLIENTE]]</p>
+    <p><strong>Peça:</strong> [[CODIGO_PECA]] - [[DESCRICAO_PECA]]</p>
+    <p><strong>Material:</strong> [[MATERIAL]]</p>
+    <p><strong>Máquina:</strong> [[MAQUINA]]</p>
+    <p><strong>Tempo de Fabricação:</strong> [[TEMPO_TOTAL]] min/peça</p>
+    <p><strong>Data:</strong> [[DATA]]</p>
+</div>
+
+<h2 class="section-title">Estrutura de Custos e Precificação</h2>
+
+<div class="info-box">
+    <h3>Metodologia de Precificação LASEC</h3>
+    <p><strong>1. Custo de Fabricação:</strong> Setup + MOD + CIF</p>
+    <p style="margin-left: 20px;">• Setup: R$ [[SETUP_VALOR]] ([[SETUP_HORAS]]h × R$ [[HORA_MAQUINA]]/h)</p>
+    <p style="margin-left: 20px;">• MOD: baseada em hora-máquina R$ [[HORA_MAQUINA]]/h (Planilha LASEC 2025)</p>
+    <p style="margin-left: 20px;">• CIF: 58% sobre MOD</p>
+    <p><strong>2. Markup Comercial:</strong> [[MARKUP]]% sobre custo de fabricação</p>
+    <p style="margin-left: 20px;">• Cobre: despesas administrativas, custos indiretos, depreciação, margem de lucro</p>
+    <p><strong>3. Impostos (Simples Nacional):</strong> 10% sobre valor de venda</p>
+    <p style="margin-left: 20px;">• Faixa de faturamento LASEC: Simples 10%</p>
+    <p><strong>4. Preço Final NFe:</strong> (Custo + Perdas [[PERDAS]]%) × [[MARKUP_MULT]] × 1,10</p>
+</div>
+
+<h2 class="section-title">Cálculo Detalhado - Lote [[LOTE_RECOMENDADO]] peças (RECOMENDADO)</h2>
+
+<div class="calculo-detalhado">
+    <h4 style="color: #1e3c72; margin-top: 0;">Passo a Passo do Cálculo</h4>
+
+    <div class="calculo-linha">
+        <span><strong>1. Custo de Fabricação (base)</strong></span>
+        <span>R$ [[CUSTO_FABRICACAO]]/peça</span>
+    </div>
+
+    <div class="calculo-linha" style="margin-left: 20px; font-size: 14px; color: #666;">
+        <span>• Setup: R$ [[SETUP_VALOR]] ÷ [[LOTE_RECOMENDADO]] pçs</span>
+        <span>R$ [[SETUP_UNITARIO]]</span>
+    </div>
+    <div class="calculo-linha" style="margin-left: 20px; font-size: 14px; color: #666;">
+        <span>• MOD: [[TEMPO_TOTAL]] min × R$ [[HORA_MAQUINA]]/h ÷ 60 min</span>
+        <span>R$ [[MOD_UNITARIO]]</span>
+    </div>
+    <div class="calculo-linha" style="margin-left: 20px; font-size: 14px; color: #666;">
+        <span>• CIF (58%): depreciação, energia, manutenção</span>
+        <span>R$ [[CIF_UNITARIO]]</span>
+    </div>
+
+    <div class="calculo-linha">
+        <span><strong>2. Aplicação de Perdas ([[PERDAS]]%)</strong></span>
+        <span>R$ [[CUSTO_FABRICACAO]] × [[PERDAS_MULT]]</span>
+    </div>
+    <div class="calculo-linha" style="background-color: #fff3cd;">
+        <span>= Custo com perdas</span>
+        <span><strong>R$ [[CUSTO_COM_PERDAS]]/peça</strong></span>
+    </div>
+
+    <div class="calculo-linha">
+        <span><strong>3. Aplicação de Markup ([[MARKUP]]%)</strong></span>
+        <span>R$ [[CUSTO_COM_PERDAS]] × [[MARKUP_MULT]]</span>
+    </div>
+    <div class="calculo-linha" style="background-color: #e8f5e9;">
+        <span>= Preço antes de impostos</span>
+        <span><strong>R$ [[PRECO_SEM_IMPOSTO]]/peça</strong></span>
+    </div>
+
+    <div class="calculo-linha">
+        <span><strong>4. Cálculo de Impostos (Simples Nacional 10%)</strong></span>
+        <span>R$ [[PRECO_SEM_IMPOSTO]] × 1,10</span>
+    </div>
+
+    <div class="calculo-linha total">
+        <span>PREÇO FINAL NOTA FISCAL</span>
+        <span>R$ [[PRECO_NFE]]/peça</span>
+    </div>
+
+    <div class="calculo-linha" style="background-color: #d4edda; margin-top: 10px;">
+        <span><strong>VALOR TOTAL LOTE [[LOTE_RECOMENDADO]] PEÇAS</strong></span>
+        <span><strong>R$ [[TOTAL_NFE_LOTE]]</strong></span>
+    </div>
+</div>
+
+<h2 class="section-title">Tabela de Preços por Lote</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Lote</th>
+            <th>Custo Fabricação<br>(R$/peça)</th>
+            <th>Markup [[MARKUP]]%<br>(R$/peça)</th>
+            <th>Preço s/ Imposto<br>(R$/peça)</th>
+            <th>Impostos 10%<br>(R$/peça)</th>
+            <th style="background-color: #1a3260;">PREÇO NFe<br>(R$/peça)</th>
+            <th style="background-color: #1a3260;">TOTAL LOTE<br>(R$)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>[[LOTE_1]] pçs</strong></td>
+            <td>R$ [[CUSTO_FAB_LOTE_1]]</td>
+            <td>+ R$ [[MARKUP_LOTE_1]]</td>
+            <td>R$ [[PRECO_SEM_IMP_LOTE_1]]</td>
+            <td>+ R$ [[IMPOSTO_LOTE_1]]</td>
+            <td style="background-color: #f8f9fa;"><strong>R$ [[PRECO_NFE_LOTE_1]]</strong></td>
+            <td style="background-color: #f8f9fa;"><strong>R$ [[TOTAL_NFE_LOTE_1]]</strong></td>
+        </tr>
+        <tr class="destaque">
+            <td><strong>[[LOTE_2]] pçs</strong></td>
+            <td>R$ [[CUSTO_FAB_LOTE_2]]</td>
+            <td>+ R$ [[MARKUP_LOTE_2]]</td>
+            <td>R$ [[PRECO_SEM_IMP_LOTE_2]]</td>
+            <td>+ R$ [[IMPOSTO_LOTE_2]]</td>
+            <td><strong>R$ [[PRECO_NFE_LOTE_2]]</strong></td>
+            <td><strong>R$ [[TOTAL_NFE_LOTE_2]]</strong></td>
+        </tr>
+        <tr>
+            <td><strong>[[LOTE_3]] pçs</strong></td>
+            <td>R$ [[CUSTO_FAB_LOTE_3]]</td>
+            <td>+ R$ [[MARKUP_LOTE_3]]</td>
+            <td>R$ [[PRECO_SEM_IMP_LOTE_3]]</td>
+            <td>+ R$ [[IMPOSTO_LOTE_3]]</td>
+            <td style="background-color: #f8f9fa;"><strong>R$ [[PRECO_NFE_LOTE_3]]</strong></td>
+            <td style="background-color: #f8f9fa;"><strong>R$ [[TOTAL_NFE_LOTE_3]]</strong></td>
+        </tr>
+        <tr>
+            <td><strong>[[LOTE_4]] pçs</strong></td>
+            <td>R$ [[CUSTO_FAB_LOTE_4]]</td>
+            <td>+ R$ [[MARKUP_LOTE_4]]</td>
+            <td>R$ [[PRECO_SEM_IMP_LOTE_4]]</td>
+            <td>+ R$ [[IMPOSTO_LOTE_4]]</td>
+            <td style="background-color: #f8f9fa;"><strong>R$ [[PRECO_NFE_LOTE_4]]</strong></td>
+            <td style="background-color: #f8f9fa;"><strong>R$ [[TOTAL_NFE_LOTE_4]]</strong></td>
+        </tr>
+        <tr>
+            <td><strong>[[LOTE_5]] pçs</strong></td>
+            <td>R$ [[CUSTO_FAB_LOTE_5]]</td>
+            <td>+ R$ [[MARKUP_LOTE_5]]</td>
+            <td>R$ [[PRECO_SEM_IMP_LOTE_5]]</td>
+            <td>+ R$ [[IMPOSTO_LOTE_5]]</td>
+            <td style="background-color: #f8f9fa;"><strong>R$ [[PRECO_NFE_LOTE_5]]</strong></td>
+            <td style="background-color: #f8f9fa;"><strong>R$ [[TOTAL_NFE_LOTE_5]]</strong></td>
+        </tr>
+        <tr>
+            <td><strong>[[LOTE_6]] pçs</strong></td>
+            <td>R$ [[CUSTO_FAB_LOTE_6]]</td>
+            <td>+ R$ [[MARKUP_LOTE_6]]</td>
+            <td>R$ [[PRECO_SEM_IMP_LOTE_6]]</td>
+            <td>+ R$ [[IMPOSTO_LOTE_6]]</td>
+            <td style="background-color: #f8f9fa;"><strong>R$ [[PRECO_NFE_LOTE_6]]</strong></td>
+            <td style="background-color: #f8f9fa;"><strong>R$ [[TOTAL_NFE_LOTE_6]]</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="section-title">Resumo de Preços para Proposta Comercial</h2>
+
+<div class="grid-precos">
+    <div class="card-preco">
+        <h3>Lote [[LOTE_1]] peças</h3>
+        <div class="lote">[[LOTE_1]] un</div>
+        <div class="preco">R$ [[PRECO_NFE_LOTE_1]]</div>
+        <div style="color: #666; font-size: 14px;">por peça</div>
+        <div class="total">Total: R$ [[TOTAL_NFE_LOTE_1]]</div>
+    </div>
+
+    <div class="card-preco recomendado">
+        <h3>Lote [[LOTE_2]] peças</h3>
+        <div class="lote">[[LOTE_2]] un</div>
+        <div class="preco">R$ [[PRECO_NFE_LOTE_2]]</div>
+        <div style="color: #666; font-size: 14px;">por peça</div>
+        <div class="total">Total: R$ [[TOTAL_NFE_LOTE_2]]</div>
+        <div class="badge">RECOMENDADO</div>
+    </div>
+
+    <div class="card-preco">
+        <h3>Lote [[LOTE_3]] peças</h3>
+        <div class="lote">[[LOTE_3]] un</div>
+        <div class="preco">R$ [[PRECO_NFE_LOTE_3]]</div>
+        <div style="color: #666; font-size: 14px;">por peça</div>
+        <div class="total">Total: R$ [[TOTAL_NFE_LOTE_3]]</div>
+    </div>
+
+    <div class="card-preco">
+        <h3>Lote [[LOTE_4]] peças</h3>
+        <div class="lote">[[LOTE_4]] un</div>
+        <div class="preco">R$ [[PRECO_NFE_LOTE_4]]</div>
+        <div style="color: #666; font-size: 14px;">por peça</div>
+        <div class="total">Total: R$ [[TOTAL_NFE_LOTE_4]]</div>
+    </div>
+
+    <div class="card-preco">
+        <h3>Lote [[LOTE_5]] peças</h3>
+        <div class="lote">[[LOTE_5]] un</div>
+        <div class="preco">R$ [[PRECO_NFE_LOTE_5]]</div>
+        <div style="color: #666; font-size: 14px;">por peça</div>
+        <div class="total">Total: R$ [[TOTAL_NFE_LOTE_5]]</div>
+    </div>
+
+    <div class="card-preco">
+        <h3>Lote [[LOTE_6]] peças</h3>
+        <div class="lote">[[LOTE_6]] un</div>
+        <div class="preco">R$ [[PRECO_NFE_LOTE_6]]</div>
+        <div style="color: #666; font-size: 14px;">por peça</div>
+        <div class="total">Total: R$ [[TOTAL_NFE_LOTE_6]]</div>
+    </div>
+</div>
+
+<div class="alerta-comercial">
+    <h4>Orientações para Negociação Comercial</h4>
+    <p><strong>1. Lote Recomendado: [[LOTE_RECOMENDADO]] peças</strong></p>
+    <ul>
+        <li>Preço competitivo: R$ [[PRECO_NFE]]/peça</li>
+        <li>Investimento viável: R$ [[TOTAL_NFE_LOTE]] total</li>
+        <li>Possibilidade de programação de entregas parceladas</li>
+    </ul>
+    <br>
+    <p><strong>2. Argumentos de Venda:</strong></p>
+    <ul>
+        <li>[[OBSERVACAO_MATERIAL]]</li>
+        <li>Prazo de entrega: [[PRAZO_ENTREGA]] dias após recebimento da matéria-prima</li>
+        <li>Pagamento: [[CONDICAO_PAGAMENTO]]</li>
+        <li>Qualidade garantida: processo CNC de alta precisão</li>
+        <li>Programação de entregas: flexibilidade para fracionamento do lote</li>
+    </ul>
+</div>
+
+<h2 class="section-title">Informações para Nota Fiscal</h2>
+
+<div class="info-box">
+    <h3>Dados para Emissão de NFe</h3>
+    <p><strong>Emitente:</strong> MALELO INDÚSTRIA E COMÉRCIO FERRAMENTAS LTDA ME</p>
+    <p><strong>Nome Fantasia:</strong> LASEC USINAGEM DE PRECISÃO</p>
+    <p><strong>CNPJ:</strong> 07.047.619/0001-09</p>
+    <p><strong>IE:</strong> 117.116.373.116 | <strong>IM:</strong> 3.351.866-1</p>
+    <p><strong>Endereço:</strong> Rua Álvaro Silva, 233 - Bairro do Limão - CEP 02723-020 - São Paulo - SP</p>
+    <p><strong>NCM:</strong> [[NCM]]</p>
+    <p><strong>Descrição NFe:</strong> "[[DESCRICAO_NFE]]"</p>
+    <p><strong>CFOP:</strong> 5101 (Venda de produção do estabelecimento)</p>
+    <p><strong>Regime Tributário:</strong> Simples Nacional</p>
+    <p><strong>Alíquota Efetiva:</strong> 10,00% (embutida no preço)</p>
+</div>
+
+<div class="conclusao">
+    <h3 style="margin-top: 0;">RESUMO EXECUTIVO PARA PROPOSTA</h3>
+    <p style="font-size: 20px; font-weight: bold; margin: 20px 0;">
+        PREÇO RECOMENDADO: R$ [[PRECO_NFE]] por peça
+    </p>
+    <p style="font-size: 18px; margin: 15px 0;">
+        Lote Recomendado: <strong>[[LOTE_RECOMENDADO]] PEÇAS</strong>
+    </p>
+    <p style="font-size: 18px; margin: 15px 0;">
+        Investimento Total: <strong>R$ [[TOTAL_NFE_LOTE]]</strong>
+    </p>
+    <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.3); margin: 20px 0;">
+    <p style="font-size: 14px; line-height: 1.8;">
+        Incluso: Impostos (Simples 10%), Setup, MOD, CIF<br>
+        Prazo: [[PRAZO_ENTREGA]] dias após recebimento da MP<br>
+        Pagamento: [[CONDICAO_PAGAMENTO]]<br>
+        Material: [[OBSERVACAO_MATERIAL]]
+    </p>
+</div>
+
+<div class="footer">
+    <strong>LASEC USINAGEM</strong> - Usinagem de Precisão CNC<br>
+    Rua Álvaro Silva, 233 - Bairro do Limão - São Paulo/SP - CEP 02723-020<br>
+    Tel: (11) 3936-5041 / (11) 3935-1271<br>
+    Data: [[DATA]] | Orçamento [[ORCAMENTO]] - [[CLIENTE]] | <span style="color: #dc3545; font-weight: bold;">CONFIDENCIAL - NÃO DISTRIBUIR</span>
+</div>
+
+</div>
+
+</body>
+</html>

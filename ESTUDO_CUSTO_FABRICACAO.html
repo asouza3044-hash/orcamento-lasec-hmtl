@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Estudo de Custo de Fabricação - [[CODIGO_PECA]]</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+    position: relative;
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background-image: url('simbolo lasec.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.03;
+    z-index: -1;
+    pointer-events: none;
+}
+.main-header {
+    background: white;
+    padding: 30px 40px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    margin-bottom: 30px;
+}
+.logo-container {
+    flex-shrink: 0;
+}
+.logo-container img {
+    height: 120px;
+    width: auto;
+    filter: brightness(1.1) contrast(1.1);
+}
+.company-info-header {
+    flex-grow: 1;
+}
+.company-name-main {
+    font-size: 32pt;
+    font-weight: bold;
+    color: #1e3c72;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+}
+.company-tagline {
+    font-size: 14pt;
+    color: #2a5298;
+    margin: 8px 0 0 0;
+    font-weight: 500;
+}
+.document-title-container {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #3d6bb3 100%);
+    padding: 25px 40px;
+    margin: 25px -40px 0 -40px;
+    text-align: center;
+    box-shadow: 0 3px 15px rgba(30,60,114,0.3);
+}
+.document-title {
+    font-size: 28pt;
+    font-weight: bold;
+    color: white;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+.document-subtitle {
+    font-size: 13pt;
+    color: white;
+    margin: 8px 0;
+    opacity: 0.95;
+}
+.content-wrapper {
+    padding: 0 40px 40px 40px;
+}
+.confidential {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.section-title {
+    background-color: #495057;
+    color: white;
+    padding: 8px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 10pt;
+}
+.info-table td {
+    border: 1px solid #ddd;
+    padding: 6px;
+}
+.info-table td:first-child {
+    font-weight: bold;
+    width: 35%;
+    background-color: #f8f9fa;
+}
+.info-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.calculo-detalhado {
+    background-color: #f1f3f5;
+    padding: 25px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+.calculo-linha {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #dee2e6;
+}
+.calculo-linha.destaque-calc {
+    background-color: #d4edda;
+    padding: 12px 15px;
+    margin: 10px -15px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 2px solid #28a745;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+th {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+tr:hover {
+    background-color: #e3f2fd;
+    transition: background-color 0.3s ease;
+}
+.destaque {
+    background-color: #d4edda !important;
+    font-weight: bold;
+    border: 2px solid #28a745;
+}
+.info-box {
+    background-color: #f8f9fa;
+    border-left: 5px solid #1e3c72;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+.info-box h3 {
+    margin-top: 0;
+    color: #1e3c72;
+    font-size: 18px;
+}
+.alerta-importante {
+    background-color: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+.alerta-importante h4 {
+    margin-top: 0;
+    color: #856404;
+    font-size: 16px;
+}
+.footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #1e3c72;
+    text-align: center;
+    font-size: 9pt;
+    color: #666;
+}
+</style>
+</head>
+<body>
+
+<div class="main-header">
+    <div class="header-content">
+        <div class="logo-container">
+            <img src="simbolo lasec.jpg" alt="LASEC">
+        </div>
+        <div class="company-info-header">
+            <div class="company-name-main">LASEC USINAGEM</div>
+            <div class="company-tagline">Usinagem de Precisão CNC</div>
+        </div>
+    </div>
+    <div class="document-title-container">
+        <div class="document-title">ESTUDO DE CUSTO DE FABRICAÇÃO</div>
+        <div class="document-subtitle">[[DESCRICAO_PECA]]</div>
+        <div class="document-subtitle">Orçamento [[ORCAMENTO]] - [[CLIENTE]]</div>
+        <div class="document-subtitle" style="font-size: 11pt;">Documento de Uso Interno - Confidencial</div>
+    </div>
+</div>
+
+<div class="content-wrapper">
+
+<div class="confidential">
+    DOCUMENTO CONFIDENCIAL - USO INTERNO LASEC - NÃO ENVIAR AO CLIENTE
+</div>
+
+<div class="alerta-importante">
+    <h4>DADOS ATUALIZADOS LASEC 2025</h4>
+    <p><strong>Hora-máquina [[MAQUINA]]:</strong> R$ [[HORA_MAQUINA]]/hora</p>
+    <p><strong>Fonte:</strong> Planilha "custos_ferramentaria lasec.xls" atualizada (inflação IPCA + dissídio metalúrgicos 2023-2025)</p>
+    <p><strong>Simples Nacional LASEC:</strong> 10% (faixa de faturamento atual)</p>
+    <p><strong>Setup [[MAQUINA]]:</strong> [[SETUP_HORAS]] hora = R$ [[SETUP_VALOR]]</p>
+</div>
+
+<div class="info-box">
+    <h3>Dados da Peça</h3>
+    <p><strong>Código:</strong> [[CODIGO_PECA]]</p>
+    <p><strong>Descrição:</strong> [[DESCRICAO_PECA]]</p>
+    <p><strong>Material:</strong> [[MATERIAL]]</p>
+    <p><strong>Máquina:</strong> [[MAQUINA]]</p>
+    <p><strong>Tempo de Fabricação:</strong> [[TEMPO_TOTAL]] min/peça ([[TEMPO_PRODUTIVO]] min produtivo + [[TEMPO_IMPRODUTIVO]] min improdutivo)</p>
+</div>
+
+<h2 class="section-title">Parâmetros de Cálculo</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Parâmetro</th>
+            <th>Valor</th>
+            <th>Observações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Hora-Máquina [[MAQUINA]]</strong></td>
+            <td><strong>R$ [[HORA_MAQUINA]]/h</strong></td>
+            <td>Planilha LASEC atualizada 2025</td>
+        </tr>
+        <tr>
+            <td><strong>Setup (fixo)</strong></td>
+            <td><strong>[[SETUP_HORAS]]h = R$ [[SETUP_VALOR]]</strong></td>
+            <td>Preparação máquina + primeira peça aprovada</td>
+        </tr>
+        <tr>
+            <td><strong>Tempo Produtivo</strong></td>
+            <td>[[TEMPO_PRODUTIVO]] min/peça</td>
+            <td>Tempo marcado pelo operador</td>
+        </tr>
+        <tr>
+            <td><strong>Tempo Improdutivo</strong></td>
+            <td>[[TEMPO_IMPRODUTIVO]] min/peça</td>
+            <td>Trocas + aproximações + virada + inspeção</td>
+        </tr>
+        <tr>
+            <td><strong>Tempo Total/Peça</strong></td>
+            <td><strong>[[TEMPO_TOTAL]] min</strong></td>
+            <td>Medido em produção real</td>
+        </tr>
+        <tr>
+            <td><strong>CIF (Custos Indiretos)</strong></td>
+            <td>58% sobre MOD</td>
+            <td>Energia, depreciação, manutenção, etc.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 class="section-title">Cálculo Detalhado - Lote [[LOTE_RECOMENDADO]] peças (RECOMENDADO)</h2>
+
+<div class="calculo-detalhado">
+    <h4 style="color: #1e3c72; margin-top: 0;">Demonstração de Cálculo</h4>
+
+    <div class="calculo-linha">
+        <span><strong>1. Setup (custo fixo)</strong></span>
+        <span>[[SETUP_HORAS]]h × R$ [[HORA_MAQUINA]]/h</span>
+    </div>
+    <div class="calculo-linha destaque-calc">
+        <span>Setup Total</span>
+        <span>R$ [[SETUP_VALOR]]</span>
+    </div>
+
+    <div class="calculo-linha" style="margin-top: 20px;">
+        <span><strong>2. Mão de Obra Direta (MOD)</strong></span>
+        <span></span>
+    </div>
+    <div class="calculo-linha">
+        <span>• Tempo total produção: [[LOTE_RECOMENDADO]]pçs × [[TEMPO_TOTAL]] min</span>
+        <span>[[TEMPO_TOTAL_LOTE]] minutos</span>
+    </div>
+    <div class="calculo-linha">
+        <span>• Conversão para horas: [[TEMPO_TOTAL_LOTE]] min ÷ 60</span>
+        <span>[[HORAS_TOTAL_LOTE]] horas</span>
+    </div>
+    <div class="calculo-linha">
+        <span>• Custo MOD: [[HORAS_TOTAL_LOTE]]h × R$ [[HORA_MAQUINA]]/h</span>
+        <span>R$ [[MOD_TOTAL]]</span>
+    </div>
+    <div class="calculo-linha destaque-calc">
+        <span>MOD Total</span>
+        <span>R$ [[MOD_TOTAL]]</span>
+    </div>
+
+    <div class="calculo-linha" style="margin-top: 20px;">
+        <span><strong>3. Custos Indiretos de Fabricação (CIF)</strong></span>
+        <span></span>
+    </div>
+    <div class="calculo-linha">
+        <span>• Base CIF: Setup + MOD</span>
+        <span>R$ [[SETUP_VALOR]] + R$ [[MOD_TOTAL]] = R$ [[BASE_CIF]]</span>
+    </div>
+    <div class="calculo-linha">
+        <span>• CIF = 58% sobre (Setup + MOD)</span>
+        <span>R$ [[BASE_CIF]] × 0,58</span>
+    </div>
+    <div class="calculo-linha destaque-calc">
+        <span>CIF Total</span>
+        <span>R$ [[CIF_TOTAL]]</span>
+    </div>
+
+    <div class="calculo-linha" style="margin-top: 20px; border-top: 3px solid #1e3c72; padding-top: 15px; font-size: 18px; font-weight: bold; color: #1e3c72;">
+        <span>CUSTO TOTAL LOTE [[LOTE_RECOMENDADO]]</span>
+        <span>R$ [[CUSTO_TOTAL_LOTE]]</span>
+    </div>
+
+    <div class="calculo-linha" style="font-size: 20px; font-weight: bold; color: #28a745; border: 3px solid #28a745; background-color: #d4edda; padding: 15px; margin: 15px -15px; border-radius: 8px;">
+        <span>CUSTO POR PEÇA (LOTE [[LOTE_RECOMENDADO]])</span>
+        <span>R$ [[CUSTO_UNITARIO]]/peça</span>
+    </div>
+</div>
+
+<h2 class="section-title">Tabela Comparativa de Custos por Lote</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Lote<br>(peças)</th>
+            <th>Setup<br>(R$)</th>
+            <th>MOD<br>(R$)</th>
+            <th>CIF 58%<br>(R$)</th>
+            <th>Custo Total<br>(R$)</th>
+            <th style="background-color: #1a3260;">Custo/Peça<br>(R$)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>PILOTO (10-20)</strong></td>
+            <td>[[SETUP_LOTE_1]]</td>
+            <td>[[MOD_LOTE_1]]</td>
+            <td>[[CIF_LOTE_1]]</td>
+            <td>[[CUSTO_TOTAL_LOTE_1]]</td>
+            <td style="background-color: #f8f9fa;"><strong>R$ [[CUSTO_UNIT_LOTE_1]]</strong></td>
+        </tr>
+        <tr>
+            <td><strong>30 peças</strong></td>
+            <td>[[SETUP_LOTE_2]]</td>
+            <td>[[MOD_LOTE_2]]</td>
+            <td>[[CIF_LOTE_2]]</td>
+            <td>[[CUSTO_TOTAL_LOTE_2]]</td>
+            <td style="background-color: #f8f9fa;"><strong>R$ [[CUSTO_UNIT_LOTE_2]]</strong></td>
+        </tr>
+        <tr>
+            <td><strong>50 peças</strong></td>
+            <td>[[SETUP_LOTE_3]]</td>
+            <td>[[MOD_LOTE_3]]</td>
+            <td>[[CIF_LOTE_3]]</td>
+            <td>[[CUSTO_TOTAL_LOTE_3]]</td>
+            <td style="background-color: #f8f9fa;"><strong>R$ [[CUSTO_UNIT_LOTE_3]]</strong></td>
+        </tr>
+        <tr class="destaque">
+            <td><strong>100 peças</strong></td>
+            <td>[[SETUP_LOTE_4]]</td>
+            <td>[[MOD_LOTE_4]]</td>
+            <td>[[CIF_LOTE_4]]</td>
+            <td>[[CUSTO_TOTAL_LOTE_4]]</td>
+            <td><strong>R$ [[CUSTO_UNIT_LOTE_4]]</strong></td>
+        </tr>
+        <tr>
+            <td><strong>200 peças</strong></td>
+            <td>[[SETUP_LOTE_5]]</td>
+            <td>[[MOD_LOTE_5]]</td>
+            <td>[[CIF_LOTE_5]]</td>
+            <td>[[CUSTO_TOTAL_LOTE_5]]</td>
+            <td style="background-color: #f8f9fa;"><strong>R$ [[CUSTO_UNIT_LOTE_5]]</strong></td>
+        </tr>
+        <tr>
+            <td><strong>500 peças</strong></td>
+            <td>[[SETUP_LOTE_6]]</td>
+            <td>[[MOD_LOTE_6]]</td>
+            <td>[[CIF_LOTE_6]]</td>
+            <td>[[CUSTO_TOTAL_LOTE_6]]</td>
+            <td style="background-color: #f8f9fa;"><strong>R$ [[CUSTO_UNIT_LOTE_6]]</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="info-box">
+    <h3>Observações Importantes</h3>
+    <ul>
+        <li><strong>Setup:</strong> Custo fixo de R$ [[SETUP_VALOR]] ([[SETUP_HORAS]] hora) diluído entre as peças do lote</li>
+        <li><strong>MOD:</strong> Maior componente do custo, baseado em hora-máquina R$ [[HORA_MAQUINA]]</li>
+        <li><strong>CIF:</strong> 58% sobre (Setup + MOD) - cobre energia, depreciação, manutenção, ferramentas</li>
+        <li><strong>Material:</strong> [[OBSERVACAO_MATERIAL]]</li>
+        <li><strong>Impacto do Setup:</strong> Diminui significativamente com o aumento do lote</li>
+        <li><strong>Ganhos de Escala:</strong> Economia crescente em lotes maiores</li>
+    </ul>
+</div>
+
+<div class="alerta-importante">
+    <h4>CONCLUSÃO - LOTE RECOMENDADO: [[LOTE_RECOMENDADO]] PEÇAS</h4>
+    <p><strong>Custo por peça: R$ [[CUSTO_UNITARIO]]</strong></p>
+    <p><strong>Custo total lote: R$ [[CUSTO_TOTAL_LOTE]]</strong></p>
+    <br>
+    <p><strong>Justificativa:</strong></p>
+    <ul>
+        <li>Setup bem diluído no custo total</li>
+        <li>Economia significativa vs lotes menores</li>
+        <li>Custo competitivo próximo aos lotes maiores</li>
+        <li>Lote ideal para programação e estoque do cliente</li>
+    </ul>
+</div>
+
+<div class="footer">
+    <strong>LASEC USINAGEM</strong> - Usinagem de Precisão CNC<br>
+    Rua Álvaro Silva, 233 - Bairro do Limão - São Paulo/SP - CEP 02723-020<br>
+    Tel: (11) 3936-5041 / (11) 3935-1271<br>
+    Data: [[DATA]] | Orçamento [[ORCAMENTO]] - [[CLIENTE]] | <span style="color: #dc3545; font-weight: bold;">CONFIDENCIAL - NÃO DISTRIBUIR</span>
+</div>
+
+</div>
+
+</body>
+</html>

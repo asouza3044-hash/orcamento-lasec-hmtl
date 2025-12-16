@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Processo de Fabricação - PP 01 00003</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+    position: relative;
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background-image: url('simbolo lasec.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.03;
+    z-index: -1;
+    pointer-events: none;
+}
+.main-header {
+    background: white;
+    padding: 30px 40px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    margin-bottom: 30px;
+}
+.logo-container img {
+    height: 120px;
+    width: auto;
+}
+.company-name-main {
+    font-size: 32pt;
+    font-weight: bold;
+    color: #1e3c72;
+    margin: 0;
+}
+.company-tagline {
+    font-size: 14pt;
+    color: #2a5298;
+    margin: 8px 0 0 0;
+}
+.document-title-container {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #3d6bb3 100%);
+    padding: 25px 40px;
+    margin: 25px -40px 0 -40px;
+    text-align: center;
+}
+.document-title {
+    font-size: 28pt;
+    font-weight: bold;
+    color: white;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+}
+.document-subtitle {
+    font-size: 13pt;
+    color: white;
+    margin: 8px 0;
+}
+.content-wrapper {
+    padding: 0 40px 40px 40px;
+}
+.confidential {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.section-title {
+    background-color: #495057;
+    color: white;
+    padding: 8px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 10pt;
+}
+.info-table td {
+    border: 1px solid #ddd;
+    padding: 6px;
+}
+.info-table td:first-child {
+    font-weight: bold;
+    width: 35%;
+    background-color: #f8f9fa;
+}
+.warning-box {
+    background-color: #fff3cd;
+    padding: 15px;
+    margin: 15px 0;
+    border-left: 4px solid #ffc107;
+}
+.success-box {
+    background-color: #d4edda;
+    padding: 15px;
+    margin: 15px 0;
+    border-left: 4px solid #28a745;
+}
+.footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #1e3c72;
+    text-align: center;
+    font-size: 9pt;
+    color: #666;
+}
+code {
+    background-color: #e9ecef;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 9pt;
+    color: #495057;
+}
+</style>
+</head>
+<body>
+
+<div class="main-header">
+    <div class="header-content">
+        <div class="logo-container">
+            <img src="simbolo lasec.jpg" alt="LASEC">
+        </div>
+        <div class="company-info-header">
+            <div class="company-name-main">LASEC USINAGEM</div>
+            <div class="company-tagline">Usinagem de Precisão CNC</div>
+        </div>
+    </div>
+    <div class="document-title-container">
+        <div class="document-title">PROCESSO DE FABRICAÇÃO</div>
+        <div class="document-subtitle">Pino de Engate</div>
+        <div class="document-subtitle">Orçamento 012/2025</div>
+        <div class="document-subtitle" style="font-size: 11pt;">Documento de Uso Interno - Confidencial</div>
+    </div>
+</div>
+
+<div class="content-wrapper">
+
+<div class="confidential">
+    DOCUMENTO CONFIDENCIAL - USO INTERNO LASEC - NÃO ENVIAR AO CLIENTE
+</div>
+
+<div class="section-title">1. DADOS GERAIS DA PEÇA</div>
+<table class="info-table">
+    <tr>
+        <td>Código:</td>
+        <td>PP 01 00003</td>
+    </tr>
+    <tr>
+        <td>Descrição:</td>
+        <td>Pino de Engate</td>
+    </tr>
+    <tr>
+        <td>Material:</td>
+        <td><strong>Aço Trefilado ABNT 1010/20</strong> - Ø 5/8" (15,87mm) - <span style="color: #28a745; font-weight: bold;">Fornecido pelo Cliente</span></td>
+    </tr>
+    <tr>
+        <td>Dimensões matéria-prima:</td>
+        <td>Ø 15,87mm x Comprimento aprox. 25mm</td>
+    </tr>
+    <tr>
+        <td>Peso líquido:</td>
+        <td>~1,8g / peça</td>
+    </tr>
+    <tr>
+        <td>Máquina:</td>
+        <td><strong>Doosan LYNX 220 LM</strong> (com acionador lateral para furação)</td>
+    </tr>
+    <tr>
+        <td>Programa CNC:</td>
+        <td><strong>PP_01_00003</strong> (referência: programas O0004, O0012, O0047 - banco de dados LASEC)</td>
+    </tr>
+    <tr>
+        <td>Fixação:</td>
+        <td>Pinça de Precisão ER20 - Ø interno 5/8" com redução adaptada</td>
+    </tr>
+    <tr>
+        <td>Tempo total/peça:</td>
+        <td><strong>1,5 minutos</strong> (cronometrado de programas similares do banco de dados)</td>
+    </tr>
+    <tr>
+        <td>Setup TORNO:</td>
+        <td><strong>0,5h</strong> (30 minutos) - Montagem de pinça, acionador e ajuste de ferramentas</td>
+    </tr>
+</table>
+
+<div class="section-title">2. DIMENSÕES FINAIS</div>
+<table class="info-table">
+    <tr>
+        <td>Dimensões gerais:</td>
+        <td>Ø 14mm (corpo principal) | Ø 10mm (ponta) | Ø 3mm (lateral) | Comprimento 22mm</td>
+    </tr>
+    <tr>
+        <td>Características principais:</td>
+        <td>3 cilindros escalonados + furo lateral Ø 3mm + corte frontal</td>
+    </tr>
+    <tr>
+        <td>Furações/Roscas:</td>
+        <td>Furo Lateral Ø 3mm (crítico) - Posição barrado (G87 com acionador mecânico)</td>
+    </tr>
+    <tr>
+        <td>Cortes/Acabamento:</td>
+        <td>Corte com Bedame 2mm na traseira (G75)</td>
+    </tr>
+    <tr>
+        <td>Chanfros:</td>
+        <td>Chanfro 0,5mm x 45° (ambos os lados da ponta Ø 10mm)</td>
+    </tr>
+    <tr>
+        <td>Tolerâncias gerais:</td>
+        <td>DIN 2768 classe média | Ø 10mm = d7 (-0,006 a -0,015mm)</td>
+    </tr>
+</table>
+
+<div class="section-title">3. OPERAÇÕES - Doosan LYNX 220 LM</div>
+
+<table class="info-table" style="font-size: 9pt;">
+<thead>
+    <tr style="background-color: #495057; color: white; text-align: center;">
+        <th style="padding: 8px; border: 1px solid #ddd; width: 10%;">Seq.</th>
+        <th style="padding: 8px; border: 1px solid #ddd; width: 15%;">Operação</th>
+        <th style="padding: 8px; border: 1px solid #ddd; width: 15%;">Pastilha/Ferramenta</th>
+        <th style="padding: 8px; border: 1px solid #ddd; width: 15%;">Suporte</th>
+        <th style="padding: 8px; border: 1px solid #ddd; width: 10%;">Vc/RPM</th>
+        <th style="padding: 8px; border: 1px solid #ddd; width: 10%;">Avanço</th>
+        <th style="padding: 8px; border: 1px solid #ddd; width: 8%; background-color: #28a745;">Tempo</th>
+        <th style="padding: 8px; border: 1px solid #ddd; width: 17%;">Descrição</th>
+    </tr>
+</thead>
+<tbody>
+    <tr style="background-color: #e3f2fd;">
+        <td colspan="7" style="text-align: center; font-weight: bold; padding: 12px; color: #1976d2;">
+            TORNO DOOSAN LYNX 220 LM - 4 OPERAÇÕES
+        </td>
+    </tr>
+
+    <tr>
+        <td style="text-align: center;"><strong>N10</strong></td>
+        <td style="text-align: center;"><strong>DESBASTE</strong></td>
+        <td style="text-align: center;">Pastilha TNMG<br><code>05.05.304</code></td>
+        <td style="text-align: center;">Suporte PCLNR<br><code>08.08.12M4</code></td>
+        <td style="text-align: center;">G71<br>1500 RPM</td>
+        <td style="text-align: center;">0,1 mm/rot</td>
+        <td style="font-weight: bold; background-color: #d4edda; text-align: center;">0,3 min</td>
+        <td style="text-align: center;">Redução Ø 15,87 → Ø 14,2mm (G71 com 0,2mm sobre-metal)</td>
+    </tr>
+
+    <tr style="background-color: #fff3e0;">
+        <td style="text-align: center;"><strong>N20</strong></td>
+        <td style="text-align: center;"><strong>FURO LATERAL Ø 3mm</strong></td>
+        <td style="text-align: center;">Broca HSS Ø 3mm<br><code>08.06.003</code></td>
+        <td style="text-align: center;">Suporte Acionador<br><code>08.08.ACN01</code></td>
+        <td style="text-align: center;">G87<br>2000 RPM</td>
+        <td style="text-align: center;">0,15 mm/rot</td>
+        <td style="font-weight: bold; background-color: #fff59d; text-align: center; color: #d84315; font-size: 11pt;"><strong>0,4 min</strong></td>
+        <td style="text-align: center; background-color: #ffe0b2;">⭐ <strong>CRÍTICO:</strong> Acionador lateral mecânico (G87X6.0Q2000R0.5F0.15)</td>
+    </tr>
+
+    <tr>
+        <td style="text-align: center;"><strong>N30</strong></td>
+        <td style="text-align: center;"><strong>ACABAMENTO</strong></td>
+        <td style="text-align: center;">Pastilha TNMG<br><code>05.05.304</code></td>
+        <td style="text-align: center;">Suporte PCLNR<br><code>08.08.12M4</code></td>
+        <td style="text-align: center;">G71+G70<br>1200 RPM</td>
+        <td style="text-align: center;">0,08 mm/rot</td>
+        <td style="font-weight: bold; background-color: #d4edda; text-align: center;">0,5 min</td>
+        <td style="text-align: center;">Redução Ø 14,2 → Ø 10mm + Acabamento para tolerância d7</td>
+    </tr>
+
+    <tr>
+        <td style="text-align: center;"><strong>N40</strong></td>
+        <td style="text-align: center;"><strong>CORTE BEDAME</strong></td>
+        <td style="text-align: center;">Bedame 2mm<br><code>08.11.002</code></td>
+        <td style="text-align: center;">Suporte MDJNR<br><code>08.08.06M2</code></td>
+        <td style="text-align: center;">G75<br>800 RPM</td>
+        <td style="text-align: center;">0,05 mm/rot</td>
+        <td style="font-weight: bold; background-color: #d4edda; text-align: center;">0,3 min</td>
+        <td style="text-align: center;">Corte traseira 2mm (G75X6.0Z-2.0P200Q800R1F0.05)</td>
+    </tr>
+
+    <!-- SUBTOTAL TORNO -->
+    <tr style="background-color: #1976d2; color: white; font-weight: bold;">
+        <td colspan="6" style="text-align: right; padding: 10px;">SUBTOTAL PRODUTIVO (N10+N20+N30+N40):</td>
+        <td style="font-size: 12pt; text-align: center;">1,5 min</td>
+        <td style="text-align: center;">100% efetivo</td>
+    </tr>
+
+    <tr style="background-color: #28a745; font-weight: bold; color: white;">
+        <td colspan="6" style="text-align: right; padding: 10px; font-size: 11pt;">TEMPO TORNO/PEÇA (incl. manipulação):</td>
+        <td style="font-size: 14pt; text-align: center;">1,5 min</td>
+        <td style="text-align: center;">~40 peças/hora</td>
+    </tr>
+</tbody>
+</table>
+
+<div class="section-title">4. CRONOMETRAGEM DETALHADA</div>
+<table class="info-table">
+    <tr style="background-color: #e3f2fd;">
+        <td colspan="2" style="text-align: center; font-weight: bold; padding: 8px;">Doosan LYNX 220 LM - Cronometria</td>
+    </tr>
+    <tr>
+        <td>N10 - DESBASTE (G71):</td>
+        <td>0,3 min</td>
+    </tr>
+    <tr>
+        <td>N20 - FURO LATERAL Ø 3mm (G87 com acionador):</td>
+        <td><strong style="color: #d84315;">0,4 min</strong> ⭐ Operação crítica</td>
+    </tr>
+    <tr>
+        <td>N30 - ACABAMENTO (G71+G70):</td>
+        <td>0,5 min</td>
+    </tr>
+    <tr>
+        <td>N40 - CORTE BEDAME 2mm (G75):</td>
+        <td>0,3 min</td>
+    </tr>
+    <tr style="background-color: #e9ecef;">
+        <td><strong>TOTAL PRODUTIVO:</strong></td>
+        <td><strong>1,5 minutos</strong></td>
+    </tr>
+    <tr style="background-color: #dc3545; color: white;">
+        <td><strong>TEMPO TOTAL/PEÇA:</strong></td>
+        <td><strong>1,5 minutos (já inclui manipulação)</strong></td>
+    </tr>
+    <tr>
+        <td><strong>Capacidade produtiva:</strong></td>
+        <td><strong>~40 peças/hora</strong></td>
+    </tr>
+</table>
+
+<div class="section-title">5. REFERÊNCIAS DE PROGRAMAS NO BANCO DE DADOS</div>
+<table class="info-table">
+    <tr>
+        <td>Programa O0004:</td>
+        <td>NYLON - Pino com furo lateral G87 | Tempo: 45-60s | Machine: LYNX220</td>
+    </tr>
+    <tr>
+        <td>Programa O0012:</td>
+        <td>TVPA 9000 - Pino com corte bedame G75 | Tempo: 50s | Machine: LYNX220</td>
+    </tr>
+    <tr>
+        <td>Programa O0047:</td>
+        <td>PINO FLAUTA M8 - Combinação G71+G87+G75 | Tempo: 75s | Machine: LYNX220</td>
+    </tr>
+    <tr>
+        <td>Material base:</td>
+        <td>Aço ABNT 1010/20 (similar ao banco: O0004, O0012, O0047)</td>
+    </tr>
+</table>
+
+<div class="section-title">6. FERRAMENTAS NECESSÁRIAS</div>
+<table class="info-table">
+    <tr>
+        <td>Pastilhas de Desbaste:</td>
+        <td>TNMG 160408 M53 (Coromant/Iscar) <code>08.07.304</code></td>
+    </tr>
+    <tr>
+        <td>Broca Lateral Ø 3mm:</td>
+        <td>HSSCo8 Ø 3mm com acionador lateral <code>08.06.003</code></td>
+    </tr>
+    <tr>
+        <td>Bedame 2mm:</td>
+        <td>Bedame reto 2mm x 25mm <code>08.11.002</code></td>
+    </tr>
+    <tr>
+        <td>Pinça:</td>
+        <td>Pinça ER20 com adaptador para Ø 5/8" (15,87mm)</td>
+    </tr>
+    <tr>
+        <td>Acionador:</td>
+        <td>Acionador mecânico lateral integrado Doosan LYNX 220 LM</td>
+    </tr>
+</table>
+
+<div class="warning-box">
+    <h4 style="color: #856404; margin-top: 0;">OPERAÇÕES CRÍTICAS</h4>
+    <ul style="margin-left: 20px;">
+        <li><strong>Furo Lateral Ø 3mm (N20):</strong> Esta é a operação diferencial que justifica uso de torno com acionador mecânico. Requer posicionamento preciso e retenção lateral durante perfuração.</li>
+        <li><strong>Tolerância Ø 10mm:</strong> Tolerância d7 crítica. O acabamento (N30) com G70 garante este requisito.</li>
+        <li><strong>Corte Bedame:</strong> Reduz rebarbas e facilita desempilhamento automático. Velocidade reduzida para evitar flexão.</li>
+    </ul>
+</div>
+
+<div class="success-box">
+    <h4 style="color: #155724; margin-top: 0;">VANTAGENS DO PROCESSO</h4>
+    <ul style="margin-left: 20px;">
+        <li>Simples e robusto: 4 operações diretas, sem transferência entre máquinas</li>
+        <li>Ciclo rápido: 1,5 min/peça permite alta produtividade (~40 peças/hora)</li>
+        <li>Furo lateral em torno: Evita necessidade de operação adicional em centro de usinagem</li>
+        <li>Baseado em programas reais: Tempos validados contra O0004, O0012, O0047 do banco de dados</li>
+    </ul>
+</div>
+
+<div class="warning-box">
+    <h4 style="color: #856404; margin-top: 0;">PONTOS DE ATENÇÃO</h4>
+    <ul style="margin-left: 20px;">
+        <li>Acionador lateral: Verificar pressão de ar e vedação antes de produção</li>
+        <li>Retenção lateral: Carga lateral durante furo G87 requer pinça de qualidade e centragem adequada</li>
+        <li>Cambagem: Monitorar vibração durante furo lateral em volumes elevados</li>
+    </ul>
+</div>
+
+<div class="footer">
+    <strong>LASEC USINAGEM</strong> - Usinagem de Precisão CNC<br>
+    Rua Álvaro Silva, 233 - Bairro do Limão - São Paulo/SP - CEP 02723-020<br>
+    Tel: (11) 3936-5041 / (11) 3935-1271<br>
+    Data: 16/12/2025 | Orçamento 012/2025 | <span style="color: #dc3545; font-weight: bold;">CONFIDENCIAL - NÃO DISTRIBUIR</span>
+</div>
+
+</div>
+
+</body>
+</html>
